@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Management System (BMS) | Smart Building Solutions | Tabreed</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Tabreed's advanced Building Management Systems (BMS) optimize HVAC, refrigeration, and building automation for energy efficiency, cost savings, and sustainability. Expert BMS solutions across UAE.">
+    <meta name="keywords" content="BMS, Building Management System, building automation, HVAC control, energy management, smart building, BACnet, Modbus, building control systems, UAE">
+    <meta name="author" content="Tabreed">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #0056b3;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0056b3;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #0056b3;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #0056b3;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #003d7a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,86,179,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0056b3;
+            border: 2px solid #0056b3;
+        }
+
+        .btn-outline:hover {
+            background: #0056b3;
+            color: white;
+        }
+
+        .btn-light {
+            background: white;
+            color: #0056b3;
+        }
+
+        .btn-light:hover {
+            background: #f0f7ff;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #002d5a 0%, #0056b3 100%);
+            color: white;
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M0 0 L100 100 M100 0 L0 100" stroke="white" stroke-width="1"/></svg>');
+            background-size: 30px 30px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .lead {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #00a3e0;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #0056b3;
+            border-radius: 2px;
+        }
+
+        .section-title.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Company Banner */
+        .company-banner {
+            background: linear-gradient(135deg, #0056b3, #00a3e0);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .company-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-banner p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,86,179,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,86,179,0.15);
+            border-color: #0056b3;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0056b3, #00a3e0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Value Cards */
+        .value-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .value-card:hover {
+            border-bottom-color: #0056b3;
+            transform: translateY(-5px);
+        }
+
+        .value-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0056b3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .value-label {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Protocol Badges */
+        .protocol-badge {
+            display: inline-block;
+            background: rgba(0,86,179,0.08);
+            color: #0056b3;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0.3rem;
+            border: 1px solid rgba(0,86,179,0.2);
+            transition: all 0.3s;
+        }
+
+        .protocol-badge:hover {
+            background: #0056b3;
+            color: white;
+            border-color: #0056b3;
+        }
+
+        /* Service Steps */
+        .service-steps {
+            counter-reset: step;
+            padding: 2rem 0;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2.5rem;
+            counter-increment: step;
+        }
+
+        .step-item:before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #0056b3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .step-item p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-item small {
+            color: #999;
+        }
+
+        /* Technology Partners */
+        .partner-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #eee;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .partner-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #0056b3;
+        }
+
+        .partner-logo {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-logo img {
+            max-width: 160px;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .partner-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .partner-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .partner-badge {
+            display: inline-block;
+            background: #f5f5f5;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0.2rem;
+        }
+
+        /* Grid System */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .col-2 {
+            flex: 0 0 16.666%;
+            padding: 0 15px;
+        }
+
+        .col-3 {
+            flex: 0 0 25%;
+            padding: 0 15px;
+        }
+
+        .col-4 {
+            flex: 0 0 33.333%;
+            padding: 0 15px;
+        }
+
+        .col-6 {
+            flex: 0 0 50%;
+            padding: 0 15px;
+        }
+
+        .col-8 {
+            flex: 0 0 66.666%;
+            padding: 0 15px;
+        }
+
+        .col-12 {
+            flex: 0 0 100%;
+            padding: 0 15px;
+        }
+
+        /* Backgrounds */
+        .bg-light {
+            background: #f8f9fa;
+        }
+
+        .bg-primary {
+            background: #0056b3;
+            color: white;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        /* Spacing */
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mt-5 { margin-top: 2rem; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mb-5 { margin-bottom: 2rem; }
+        .py-5 { padding: 3rem 0; }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card-primary {
+            border: 2px solid #0056b3;
+        }
+
+        /* Lists */
+        .list-unstyled {
+            list-style: none;
+        }
+
+        .list-unstyled li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .text-success {
+            color: #28a745;
+        }
+
+        /* Alert */
+        .alert {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: #e8f4ff;
+            border-left: 4px solid #0056b3;
+        }
+
+        .alert-primary {
+            background: #e8f4ff;
+            border-left-color: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 60px 0 30px;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #0056b3;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info i {
+            color: #0056b3;
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .col-3, .col-4, .col-6 {
+                flex: 0 0 50%;
+                margin-bottom: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .col-3, .col-4, .col-6 {
+                flex: 0 0 100%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">T</div>
+                <span class="logo-text">Tabreed</span>
+            </div>
+            
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-cta">
+                <a href="tel:+97112345678" class="btn btn-outline">
+                    <i class="fas fa-phone"></i> +971 12 345 678
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <i class="fas fa-microchip"></i> Smart Building Solutions
+                </span>
+                <h1>Building Management System (BMS) for Smart, Efficient Buildings</h1>
+                <p class="lead">Advanced BMS solutions tailored for HVAC and refrigeration systems, reducing energy consumption by 15-25% while enhancing comfort, safety, and operational efficiency.</p>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#contact" class="btn btn-light btn-lg">
+                        <i class="fas fa-comments"></i> Talk to Our Experts
+                    </a>
+                    <a href="#services" class="btn btn-outline" style="background: transparent; color: white; border-color: white;">
+                        <i class="fas fa-play"></i> Explore Solutions
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15-25%</span>
+                        <span class="stat-label">Energy Savings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">BACnet</span>
+                        <span class="stat-label">Open Protocol</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Introduction -->
+    <section id="about">
+        <div class="container">
+            <div class="company-banner">
+                <div class="row align-items-center">
+                    <div class="col-2 text-center">
+                        <i class="fas fa-building" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-10">
+                        <h3>At Tabreed, We Deliver Excellence in Building Automation</h3>
+                        <p class="lead" style="margin-bottom: 0;">From planning to operation, we help your building achieve peak energy efficiency, safety, and comfort with end-to-end BMS solutions designed for residential and commercial facilities across Canada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Value Propositions -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <span style="background: #28a745; color: white; padding: 0.5rem 2rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1.5rem;">
+                    GUARANTEED ENERGY SAVINGS
+                </span>
+                <h2 class="section-title text-center" style="margin-bottom: 1rem;">Your BMS Should Deliver More Than Just Control</h2>
+                <p class="section-subtitle">At Tabreed, our BMS solutions are designed to maximize efficiency, reduce costs, and improve operations with measurable results.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-4">
+                    <div class="value-card">
+                        <div style="width: 70px; height: 70px; background: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 1.8rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="value-number">15-25%</div>
+                        <div class="value-label">Guaranteed Savings</div>
+                        <p class="value-desc">Our BMS systems are designed to deliver specific energy reduction targets with measurable utility savings.</p>
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <div class="value-card">
+                        <div style="width: 70px; height: 70px; background: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 1.8rem;">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="value-label">Retrofit-Friendly</div>
+                        <p class="value-desc">Works with existing equipment. No need for full replacement - integrate with current HVAC infrastructure.</p>
+                        <span style="display: inline-block; background: #ffc107; color: #000; padding: 0.3rem 1rem; border-radius: 25px; font-size: 0.8rem; font-weight: 600; margin-top: 1rem;">EXTENDS EQUIPMENT LIFE</span>
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <div class="value-card">
+                        <div style="width: 70px; height: 70px; background: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 1.8rem;">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="value-label">CO2 Reduction</div>
+                        <p class="value-desc">Meet building performance standards with automated reporting and quantifiable emissions reductions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 3rem;">
+                <div class="col-12">
+                    <div class="card" style="max-width: 800px; margin: 0 auto;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;">What Sets Tabreed BMS Apart</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success"></i> <strong>Proactive Alerts:</strong> Predictive maintenance</li>
+                                    <li><i class="fas fa-check-circle text-success"></i> <strong>Fewer Complaints:</strong> Consistent comfort</li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success"></i> <strong>Staff Time Savings:</strong> Automated operation</li>
+                                    <li><i class="fas fa-check-circle text-success"></i> <strong>Real-Time Dashboards:</strong> Complete visibility</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p><i class="fas fa-clipboard-check" style="color: #0056b3;"></i> Savings verified using industry-standard measurement and verification protocols</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is BMS -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="section-title">What is a Building Management System?</h2>
+                    
+                    <div style="background: #f8f9fa; border-left: 4px solid #0056b3; padding: 1.5rem; margin: 1.5rem 0;">
+                        <p style="margin-bottom: 0;">A Building Management System (BMS) is a centralized, computer-based platform that monitors, controls, and optimizes a building's mechanical and electrical systems.</p>
+                    </div>
+                    
+                    <p>It enables real-time management of refrigeration,HVAC , lighting, power, fire safety, and security systems, ensuring efficient, reliable, and sustainable building operation.</p>
+                    
+                    <div style="border: 2px dashed #0056b3; background: #e8f4ff; padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+                        <h5 style="color: #0056b3;"><i class="fas fa-microchip"></i> Complete Hardware & Software Integration</h5>
+                        <p class="mb-0">A BMS integrates both hardware and software, allowing users to retrieve data from equipment and regulate it from a single control point.</p>
+                    </div>
+                    
+                    <p>Modern BMS solutions support open standards and Internet-based protocols for seamless interoperability.</p>
+                    
+                    <div class="mt-4">
+                        <h6 style="color: #0056b3;">Protocols We Support:</h6>
+                        <div>
+                            <span class="protocol-badge">BACnet</span>
+                            <span class="protocol-badge">LonWorks</span>
+                            <span class="protocol-badge">Modbus</span>
+                            <span class="protocol-badge">DeviceNet</span>
+                            <span class="protocol-badge">SOAP</span>
+                            <span class="protocol-badge">XML</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-6">
+                    <div class="card" style="height: 100%;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="width: 80px; height: 80px; background: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 2rem;">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 style="color: #0056b3;">Centralized Computer-Based Platform</h3>
+                            <p>Single platform for monitoring, controlling, and optimizing all building systems from one location.</p>
+                            
+                            <div class="row" style="margin-top: 2rem;">
+                                <div class="col-6">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                                        <i class="fas fa-desktop" style="color: #0056b3;"></i>
+                                        <div style="text-align: left;">
+                                            <h6 style="margin-bottom: 0;">Computer-Based Control</h6>
+                                            <small>Advanced software</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                                        <i class="fas fa-network-wired" style="color: #0056b3;"></i>
+                                        <div style="text-align: left;">
+                                            <h6 style="margin-bottom: 0;">Internet Protocols</h6>
+                                            <small>BACnet, Modbus</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                                        <i class="fas fa-database" style="color: #0056b3;"></i>
+                                        <div style="text-align: left;">
+                                            <h6 style="margin-bottom: 0;">Data Retrieval</h6>
+                                            <small>From equipment</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                                        <i class="fas fa-sliders-h" style="color: #0056b3;"></i>
+                                        <div style="text-align: left;">
+                                            <h6 style="margin-bottom: 0;">Single Control Point</h6>
+                                            <small>Central regulation</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Building Benefits -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Smart Building Automation and Benefits</h2>
+            <p class="section-subtitle text-center">Modern BMS creates intelligent, responsive environments that enhance comfort, efficiency, and sustainability.</p>
+            
+            <div class="row" style="margin-top: 3rem;">
+                <div class="col-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Energy Optimization</h3>
+                        <p>Advanced sensors and IoT connectivity optimize energy use, reduce waste, and provide real-time insights.</p>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Enhanced Safety</h3>
+                        <p>Remote surveillance, automated access control, and predictive maintenance alerts for improved security.</p>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Occupant Comfort</h3>
+                        <p>Automatic adjustment based on occupancy, weather, or schedules for optimal comfort.</p>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Operational Efficiency</h3>
+                        <p>Lower operational costs and extended equipment life through intelligent automation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 3rem;">
+                <div class="col-12">
+                    <div class="card card-primary" style="max-width: 800px; margin: 0 auto;">
+                        <h4 style="color: #0056b3; text-align: center;"><i class="fas fa-bullseye"></i> Sustainability Goals</h4>
+                        <p class="text-center mb-0">By embracing intelligent automation, buildings become more adaptable, energy efficient, and user-focused, supporting sustainability goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our BMS Services -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title text-center">Our BMS Services</h2>
+            <p class="section-subtitle text-center">Take control of your building's efficiency and performance with our comprehensive BMS solutions.</p>
+            
+            <div class="row">
+                <div class="col-8" style="margin: 0 auto;">
+                    <div class="service-steps">
+                        <div class="step-item">
+                            <h4>System Design & Planning</h4>
+                            <p>Assessing your facility's requirements to develop a tailored BMS strategy.</p>
+                            <small>Customized planning for optimal performance</small>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h4>Integration & Automation</h4>
+                            <p>Linking R/HVAC systems under a single intelligent platform.</p>
+                            <small>Seamless integration of all building systems</small>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h4>Procurement & Installation</h4>
+                            <p>Supplying high-quality components and professional installation.</p>
+                            <small>Quality components and expert installation</small>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h4>Monitoring & Control</h4>
+                            <p>Centralized dashboards for real-time monitoring and alerts.</p>
+                            <small>24/7 monitoring and control capabilities</small>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h4>Commissioning & Validation</h4>
+                            <p>Thorough testing and compliance verification.</p>
+                            <small>Comprehensive testing and verification</small>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h4>Maintenance & Lifecycle Support</h4>
+                            <p>Continuous optimization and preventive maintenance.</p>
+                            <small>Ongoing support and optimization</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <div class="alert" style="max-width: 900px; margin: 0 auto;">
+                    <div class="row align-items-center">
+                        <div class="col-8" style="text-align: left;">
+                            <h5 style="margin-bottom: 0.5rem;">Whether you have a BMS or not, Tabreed has solutions for you.</h5>
+                            <p class="mb-0">Contact us today for a personalized assessment.</p>
+                        </div>
+                        <div class="col-4">
+                            <a href="#contact" class="btn btn-primary">Get Assessment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Partners -->
+    <section class="bg-light py-5" id="partners">
+        <div class="container">
+            <h2 class="section-title text-center">Technology Partners & Products</h2>
+            <p class="section-subtitle text-center">Working with industry leaders to deliver reliable BMS solutions</p>
+            
+            <div class="row">
+                <!-- Danfoss with Logo -->
+                <div class="col-6">
+                    <div class="partner-card">
+                        <div class="partner-logo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Danfoss_logo.svg/2560px-Danfoss_logo.svg.png" 
+                                 alt="Danfoss" 
+                                 style="max-width: 160px; max-height: 60px;">
+                        </div>
+                        <h4>Danfoss</h4>
+                        <p>Alsmart Series & HVAC Drives</p>
+                        <div>
+                            <span class="partner-badge">AS-CX Series</span>
+                            <span class="partner-badge">Alsmart Design</span>
+                            <span class="partner-badge">VFD Drives</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Schneider Electric with Logo -->
+                <div class="col-6">
+                    <div class="partner-card">
+                        <div class="partner-logo">
+                            <img src="https://www.eternityx.com/brand/schneider-electric-logo/" 
+                                 alt="Schneider Electric" 
+                                 style="max-width: 180px; max-height: 60px;">
+                        </div>
+                        <h4>Schneider Electric</h4>
+                        <p>EcoStruxure Building</p>
+                        <div>
+                            <span class="partner-badge">EcoStruxure</span>
+                            <span class="partner-badge">Modicon PLCs</span>
+                            <span class="partner-badge">Building Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 2rem;">
+                <div class="col-12">
+                    <div class="card" style="border: 2px solid #17a2b8;">
+                        <div class="text-center">
+                            <i class="fas fa-handshake" style="font-size: 2rem; color: #17a2b8; margin-bottom: 1rem;"></i>
+                            <h5>Multi-Vendor Expertise</h5>
+                            <p class="mb-0">Tabreed has expertise across multiple BMS platforms, allowing us to recommend and implement the best solution for your specific building needs. We're vendor-agnostic and focused on delivering energy savings and operational efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Efficiency Focus -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="section-title">Designed for Energy Efficiency</h2>
+                    <p class="lead">Our BMS solutions are built with energy savings as a primary goal.</p>
+                    
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-success"></i> <strong>Demand Response Ready:</strong> Automatically curtail HVAC during peak events</li>
+                        <li><i class="fas fa-check-circle text-success"></i> <strong>Retrofit-Optimized:</strong> Works with existing mechanical systems</li>
+                        <li><i class="fas fa-check-circle text-success"></i> <strong>Measurable Results:</strong> Track and verify energy savings</li>
+                        <li><i class="fas fa-check-circle text-success"></i> <strong>Compliance Support:</strong> Meet building performance standards</li>
+                    </ul>
+                </div>
+                
+                <div class="col-6">
+                    <div class="card bg-primary text-white">
+                        <h4 style="color: white;">The Tabreed Advantage</h4>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h6 style="color: white;">Guaranteed Performance</h6>
+                                <p style="opacity: 0.9;">We design and commission your BMS to meet specific energy targets</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h6 style="color: white;">Existing Equipment Integration</h6>
+                                <p style="opacity: 0.9;">Extend the life of your current HVAC infrastructure</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <i class="fas fa-check-circle" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h6 style="color: white;">Reduced Service Calls</h6>
+                                <p style="opacity: 0.9;">Proactive alerts prevent issues before they become problems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Industrial & Commercial Applications</h2>
+            <p class="section-subtitle text-center">Our BMS solutions work across various applications</p>
+            
+            <div class="row">
+                <div class="col-6">
+                    <div class="card" style="height: 100%;">
+                        <div style="text-align: center;">
+                            <div style="width: 70px; height: 70px; background: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 1.8rem;">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h4>Industrial Applications</h4>
+                            <ul class="list-unstyled" style="text-align: left;">
+                                <li><i class="fas fa-check-circle text-success"></i> Manufacturing Plants</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Process Industries</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Production Facilities</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Industrial Refrigeration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-6">
+                    <div class="card" style="height: 100%;">
+                        <div style="text-align: center;">
+                            <div style="width: 70px; height: 70px; background: #0056b3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 1.8rem;">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h4>Commercial Applications</h4>
+                            <ul class="list-unstyled" style="text-align: left;">
+                                <li><i class="fas fa-check-circle text-success"></i> Commercial Offices</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Retail & Shopping Malls</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Healthcare Facilities</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Educational Institutions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-primary" id="contact" style="color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h2 style="color: white;">Take control of your building's efficiency and performance</h2>
+                    <p class="lead">Get in touch with our experts today to learn how our BMS solutions can enhance comfort, safety, and energy management.</p>
+                    
+                    <div class="row" style="margin-top: 2rem;">
+                        <div class="col-6">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <i class="fas fa-phone-alt" style="font-size: 1.2rem;"></i>
+                                <div>
+                                    <h6 style="color: white; margin-bottom: 0;">Call Our Experts</h6>
+                                    <p style="margin-bottom: 0;">+971 12 345 678</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <i class="fas fa-clock" style="font-size: 1.2rem;"></i>
+                                <div>
+                                    <h6 style="color: white; margin-bottom: 0;">Available Hours</h6>
+                                    <p style="margin-bottom: 0;">Sun-Thu: 8:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                        <i class="fas fa-leaf"></i>
+                        <strong>Ask us about our energy savings guarantees and retrofit-friendly BMS solutions.</strong>
+                    </div>
+                </div>
+                
+                <div class="col-4" style="text-align: right;">
+                    <a href="#" class="btn btn-light" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        <i class="fas fa-comments"></i> CONTACT US
+                    </a>
+                    <p style="margin-top: 1rem; opacity: 0.9;">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule your assessment today
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <h4>Tabreed</h4>
+                    <p style="color: #999;">Leading provider of Building Management Systems and smart building solutions across UAE.</p>
+                </div>
+                
+                <div class="col-3">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-3">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">BMS Installation</a></li>
+                        <li><a href="#">HVAC Control</a></li>
+                        <li><a href="#">Energy Management</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-3">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Dubai, UAE</li>
+                        <li><i class="fas fa-phone"></i> +971 12 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@tabreed.ae</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Tabreed. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if(window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.98)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+        
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
